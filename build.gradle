@@ -31,6 +31,7 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
     implementation('com.h2database:h2')
     implementation('org.springframework.boot:spring-boot-starter-mustache')
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     /* 7 버전에서는 이거 말고 imple 어쩌구 써야 된다고함.
     compile('org.springframework.boot:spring-boot-starter-web')
