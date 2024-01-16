@@ -1,6 +1,7 @@
 package com.jojoIdu.book.springboot.web;
 
 
+import com.jojoIdu.book.springboot.config.auth.LoginUser;
 import com.jojoIdu.book.springboot.config.auth.dto.SessionUser;
 import com.jojoIdu.book.springboot.service.posts.PostsService;
 import com.jojoIdu.book.springboot.web.dto.PostsResponseDto;
@@ -20,16 +21,11 @@ public class IndexController {
 
     private final PostsService postsService;
     private final HttpSession httpSession;
-/*
+
     @GetMapping("/")
-    public String index(){
-        return "index";
-    }
-*/
-    @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts", postsService.findAllDesc());
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        // SessionUser user = (SessionUser) httpSession.getAttribute("user"); //@LoginUser 어노테이션 붙였으니까 삭제함.
         if(user != null){
             model.addAttribute("userName", user.getName());
         }
