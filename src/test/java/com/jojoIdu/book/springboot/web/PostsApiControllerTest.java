@@ -1,4 +1,4 @@
-package com.jojoIdo.book.springboot.web;
+package com.jojoIdu.book.springboot.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jojoIdu.book.springboot.domain.posts.Posts;
