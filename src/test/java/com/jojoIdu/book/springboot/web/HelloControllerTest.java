@@ -16,7 +16,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = HelloController.class,
         excludeFilters = {
@@ -28,7 +27,7 @@ public class HelloControllerTest {
     @Autowired
     private MockMvc mvc;
 
-    @WithMockUser(roles = "USER")
+    @WithMockUser(roles="USER")
     @Test
     public void hello가_리턴된다() throws Exception {
         String hello = "hello";
@@ -38,7 +37,7 @@ public class HelloControllerTest {
                 .andExpect(content().string(hello));
     }
 
-    @WithMockUser(roles = "USER")
+    @WithMockUser(roles="USER")
     @Test
     public void helloDto가_리턴된다() throws Exception {
         String name = "hello";
