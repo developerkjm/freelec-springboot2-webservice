@@ -1,8 +1,6 @@
 package com.jojoIdu.book.springboot.web;
 
 
-import com.jojoIdu.book.springboot.config.auth.LoginUser;
-import com.jojoIdu.book.springboot.config.auth.dto.SessionUser;
 import com.jojoIdu.book.springboot.service.posts.PostsService;
 import com.jojoIdu.book.springboot.web.dto.PostsResponseDto;
 import lombok.Getter;
@@ -23,18 +21,28 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model, @LoginUser SessionUser user){
+    public String index(Model model){
         model.addAttribute("posts", postsService.findAllDesc());
         // SessionUser user = (SessionUser) httpSession.getAttribute("user"); //@LoginUser 어노테이션 붙였으니까 삭제함.
-        if(user != null){
-            model.addAttribute("userName", user.getName());
-        }
+
         return "index";
     }
+
+    @GetMapping("/posts/summit")
+    public String postsSummit(){
+        return "posts-summit";
+    }
+
+    @GetMapping("/posts/login")
+    public String postsLogin(){
+        return "posts-login";
+    }
+
     @GetMapping("/posts/save")
     public String postsSave(){
         return "posts-save";
     }
+
 
     @GetMapping("/posts/update/{id}")
     public String postsUpdate(@PathVariable Long id, Model model){

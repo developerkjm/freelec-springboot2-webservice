@@ -12,6 +12,11 @@ var main = {
         $('#btn-delete').on('click', function(){
             _this.delete()
         });
+        /*추가함.*/
+        $('#btn-summit').on('click', function(){
+            _this.summit()
+        });
+
 
     },
     save : function (){
@@ -31,6 +36,7 @@ var main = {
             window.location.href = '/';
         }).fail(function(error) {
             alert(JSON.stringify(error));
+
         });
     },
     update : function(){
@@ -61,11 +67,24 @@ var main = {
 
              $.ajax({
                 type: 'DELETE',
-                 url:'/api/v1/posts/'+id,
+                 url:'/api/v1/summit'+id,
                  dataType:'json',
                  contentType:'application/json; charset=utf-8'
              }).done(function(){
                  alert('글이 DELITE 되었습니다.');
+                 window.location.href = '/';
+             }).fail(function(error) {
+                 alert(JSON.stringify(error));
+         });
+    },
+    summit : function(){
+        $.ajax({
+                type: 'POST',
+                 url:'/posts/summit',
+                 dataType:'json',
+                 contentType:'application/json; charset=utf-8'
+             }).done(function(){
+                 alert('summit');
                  window.location.href = '/';
              }).fail(function(error) {
                  alert(JSON.stringify(error));

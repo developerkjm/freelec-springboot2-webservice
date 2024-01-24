@@ -1,42 +1,52 @@
 {{>layout/header}}
-    <h1>스프링부트로 시작하는 웹서비스 Ver.2</h1>
+    <h1>스프링부트, JPA, AWS 구성된 홈페이지만들기</h1>
 <div class="col-md-12">
     <!-- 로그인 기능 영억 -->
     <div class="row">
         <div class="col-md-6">
-            <a href="/posts/save" role="button" class="btn btn-primary">글등록</a>
-            {{#userName}}
-                Logged in as : <span id="user">{{userName}}</span>
-                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
-            {{/userName}}
-            {{^userName}}
-                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
-                <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
-            {{/userName}}
+<!--            <a href="/posts/save" role="button" class="btn btn-primary">글등록</a>-->
+
+
+                <br><br>
+                <a href="/posts/summit" class="btn btn-success active" role="button">회원가입</a>
+                <a href="/posts/login" class="btn btn-secondary active" role="button">로그인</a>
+
         </div>
     </div>
+    <br><br>
     <!-- 목록 출력 영역 -->
-    <table class="table table-horizontal table-bordered">
-        <thead class="thead-strong">
-        <tr>
-            <th>게시글번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>최종수정일</th>
+    <table class="table">
+        <tr class="table-dark">
+            <td colspan="4" class="text-center"><h1>개발환경</h1></td>
         </tr>
-        </thead>
-        <tbody id="tbody">
-        {{#posts}}
-            <tr>
-                <td>{{id}}</td>
+        <tr class="table-secondary">
+            <th class="text-center">No.</th>
+            <th class="text-center">Front-End</th>
+            <th class="text-center">Back-End</th>
+            <th class="text-center">Server</th>
+        </tr>
+        <tr scope="row">
+            <th>1</th>
+            <td>Mustache, BootStrap 4.3.1</td>
+            <td>SpringBoot:2.4.1, JDK:11, JPA, Tomcat:9</td>
+            <td>Amazon Linux 2, JAVA 1.8</td>
+        </tr>
+        <tr class="table-secondary">
+            <th class="text-center">No.</th>
+            <th class="text-center">Table Name</th>
+            <th colspan="2">Type</th>
+        </tr>
+        <tr scope="row">
+            <th>1</th>
+            <td>User Table</td>
+            <td colspan="2">name(String), email(String), picture(String), id(Long), role(Role)</td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>Posts Table</td>
+            <td colspan="2">title(String), content(String), author(String)</td>
+        </tr>
 
-                <td><a href="/posts/update/{{id}}">{{title}} </a></td>
-
-                <td>{{author}}</td>
-                <td>{{modifiedDate}}</td>
-            </tr>
-        {{/posts}}
-        </tbody>
     </table>
 </div>
 {{>layout/footer}}
