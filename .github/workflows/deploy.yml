@@ -3,7 +3,7 @@ name: freelec-springboot2-webservice
 on:
   push:
     branches:
-      - version/2020-12-11  # push되면 실행될 브랜치를 선택합니다.
+      - slim1 # push되면 실행될 브랜치를 선택합니다.
       # ex) master (저는 version/2020-12-11 브랜치로 지정)
   workflow_dispatch: # 수동 실행
 
@@ -14,10 +14,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up JDK 1.8
+      - name: Set up JDK 11
         uses: actions/setup-java@v1.4.3
         with:
-          java-version: 1.8
+          java-version: 11
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
